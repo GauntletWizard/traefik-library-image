@@ -11,9 +11,10 @@ RUN set -ex; \
 	wget --quiet -O /usr/local/bin/traefik "https://github.com/containous/traefik/releases/download/$VERSION/traefik_linux-${DOLLAR}arch"; \
 	chmod +x /usr/local/bin/traefik
 COPY entrypoint.sh /
-EXPOSE 80
+EXPOSE 8080
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["traefik"]
+USER 1001:1001
 
 # Metadata
 LABEL org.label-schema.vendor="Containous" \

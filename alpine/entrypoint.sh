@@ -1,6 +1,9 @@
 #!/bin/sh
 set -e
 
+# Default to a higher port. Can be overridden by specifying the --entrypoints="Name:http Address::<PORT>" again.
+set -- --entrypoints="Name:http Address::8080" "$@"
+
 # first arg is `-f` or `--some-option`
 if [ "${1#-}" != "$1" ]; then
     set -- traefik "$@"
